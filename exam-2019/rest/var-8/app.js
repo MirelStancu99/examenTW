@@ -25,7 +25,10 @@ app.get('/students', (req, res) => {
 });
 
 app.post('/students', (req, res, next) => {
-    res.status(400).json({message: 'Bad request'});
+    if(!req.body  || Object.keys(req.body).length === 0){
+        res.status(500).json({message: "Body is missing"});
+    }
+    
 })
 
 module.exports = app;

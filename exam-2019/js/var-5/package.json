@@ -7,7 +7,7 @@
     "@babel/core": "*",
     "@babel/preset-env": "*",
     "babel-jest": "*",
-    "jest": "*",
+    "jest": "^29.4.1",
     "superagent": "^4.1.0",
     "supertest": "^3.4.2"
   },

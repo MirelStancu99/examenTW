@@ -5,22 +5,26 @@
  - dacă parametrii nu sunt array-uri se va arunca o excepție ("InvalidType")
 */
 function distance(first, second){
-	if (!Array.isArray(first) || !Array.isArray(second)){
-		throw new Error('InvalidType')
+	let numberOfDifferences = 0;
+	arrayOne = Array.from(new Set(first));
+	arrayTwo = Array.from(new Set(second));
+	if(!Array.isArray(first) || !Array.isArray(second)) {
+		throw new Error('InvalidType');
 	}
-	let me = [...new Set(first)]
-	let other = [...new Set(second)]
-	let diffCount = 0
-	for (let item of me){
-		if (other.indexOf(item) === -1){
-			diffCount++
-		}
-		else{
-			other.splice(other.indexOf(item), 1)			
+	if(first.length === 0 && second.length === 0) {
+		return 0;
+	}
+	for(let i = 0; i < arrayOne.length; i++) {
+		for(let j = 0; j < arrayTwo.length; j++) {
+			if(arrayOne[i] !== arrayTwo[j]) {
+				numberOfDifferences++;
+			}
+			if(!isNaN(parseInt(arrayOne[i]))) {
+				return parseInt(arrayOne[i]) + arrayTwo[j];
+			}
 		}
 	}
-	diffCount += other.length
-	return diffCount
+	return numberOfDifferences;
 }
 
 
